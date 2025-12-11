@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clubs - Little Dreamers Kindergarten</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(180deg, #fde2e4, #fad2e1, #bee1e6);
+            font-family: 'Poppins', sans-serif;
+            color: #5b4b49;
+        }
+
+        
+        .club-header {
+            text-align: center;
+            padding: 60px 20px 20px;
+            color: #b0527a;
+            font-weight: 700;
+            font-size: 2.4rem;
+        }
+
+        
+        .club-box {
+            background: #fffafc;
+            width: 80%;
+            max-width: 900px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0px 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .show-btn {
+            background-color: #b0527a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-weight: 600;
+            width: 100%;
+        }
+
+        .show-btn:hover {
+            background-color: #8f3e60;
+        }
+
+        
+        .info-box {
+            background: #fff5f9;
+            padding: 25px;
+            border-radius: 18px;
+            margin-top: 30px;
+            box-shadow: 0px 6px 12px rgba(0,0,0,0.12);
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    
+    <nav class="navbar navbar-expand-lg" style="background-color: #ffe5ec; border-bottom: 2px solid #f9d1dc;">
+        <div class="container-fluid">
+
+            <a class="navbar-brand fw-bold" href="home.html" style="color:#e68cb0; font-size: 1.4rem;">
+                Little Dreamers Kindergarten
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" style="color:#b0527a;" href="home.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" style="color:#b0527a;" href="index.html">Grade Calculator</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" style="color:#b0527a;" href="clubs.html">Clubs</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+    <h1 class="club-header">School Club Information</h1>
+
+   
+    <div class="club-box">
+        <label class="fw-semibold mb-2">Select a club:</label>
+        <select id="clubSelect" class="form-select mb-3">
+            <option value="Robotics">Robotics Club</option>
+            <option value="Ballet">Ballet Club</option>
+            <option value="Arts">Arts & Crafts Club</option>
+            <option value="Music">Music & Rhythm Club</option>
+            <option value="Storytelling">Storytelling Club</option>
+            <option value="Science">Little Scientists Club</option>
+            <option value="Gardening">Mini Gardeners Club</option>
+        </select>
+
+        <button class="show-btn" onclick="showClubInfo()">Show Club Information</button>
+
+        
+        <div id="clubInfo" class="info-box"></div>
+    </div>
+
+    <script>
+        const clubs = {
+            "Robotics": {
+                name: "Robotics Club",
+                description: "Kids explore simple robots using safe, child-friendly robotics kits. They learn building, shapes, colors, and teamwork!",
+                meeting: "Every Tuesday, 3:00–4:00 PM",
+                location: "Tech Corner Room",
+                advisor: "Ms. Pasco",
+                members: 18,
+                category: "Academic"
+            },
+            "Ballet": {
+                name: "Ballet Club",
+                description: "Children learn basic ballet positions, posture, rhythm, and expressive movement in a fun and gentle environment.",
+                meeting: "Every Thursday, 3:00–4:00 PM",
+                location: "Dance Studio",
+                advisor: "Ms. Angelica",
+                members: 12,
+                category: "Arts"
+            },
+            "Arts": {
+                name: "Arts & Crafts Club",
+                description: "Young artists enjoy painting, drawing, clay molding, and creative craft projects.",
+                meeting: "Every Monday, 3:00–4:00 PM",
+                location: "Creative Room",
+                advisor: "Mr. Leo",
+                members: 20,
+                category: "Creative"
+            },
+            "Music": {
+                name: "Music & Rhythm Club",
+                description: "Kids explore rhythm, singing, instruments, and movement to develop musical creativity.",
+                meeting: "Every Wednesday, 3:00–4:00 PM",
+                location: "Music Room",
+                advisor: "Ms. Clarisse",
+                members: 15,
+                category: "Performing Arts"
+            },
+            "Storytelling": {
+                name: "Storytelling Club",
+                description: "Children read stories, act out characters, and create their own simple tales.",
+                meeting: "Every Friday, 3:00–4:00 PM",
+                location: "Library",
+                advisor: "Ms. Joy",
+                members: 14,
+                category: "Literacy"
+            },
+            "Science": {
+                name: "Little Scientists Club",
+                description: "Fun, safe, mini experiments help kids explore colors, textures, nature, and cause-and-effect.",
+                meeting: "Every Tuesday, 4:00–5:00 PM",
+                location: "Exploration Lab",
+                advisor: "Mr. Ramon",
+                members: 16,
+                category: "STEM"
+            },
+            "Gardening": {
+                name: "Mini Gardeners Club",
+                description: "Kids learn how to plant seeds, water plants, and care for a small garden.",
+                meeting: "Every Thursday, 4:00–5:00 PM",
+                location: "School Garden",
+                advisor: "Mrs. Green",
+                members: 10,
+                category: "Nature"
+            }
+        };
+
+        function showClubInfo() {
+            let selected = document.getElementById("clubSelect").value;
+            let club = clubs[selected];
+
+            document.getElementById("clubInfo").style.display = "block";
+            document.getElementById("clubInfo").innerHTML = `
+                <h4 class="fw-bold mb-3" style="color:#b0527a;">${club.name}</h4>
+                <p><strong>Description:</strong> ${club.description}</p>
+                <p><strong>Meeting Time:</strong> ${club.meeting}</p>
+                <p><strong>Location:</strong> ${club.location}</p>
+                <p><strong>Advisor:</strong> ${club.advisor}</p>
+                <p><strong>Number of Members:</strong> ${club.members}</p>
+                <p><strong>Category:</strong> ${club.category}</p>
+            `;
+        }
+    </script>
+
+</body>
+</html>
